@@ -1,0 +1,35 @@
+services:
+  cft_db:
+    image: postgres:16-alpine
+    container_name: cft_db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cft_db}
+      POSTGRES_USER: ${POSTGRES_USER:-cft_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cft_password}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cft_user} -d ${POSTGRES_DB:-cft_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  cft_app:
+    build: .
+    container_name: cft_app
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://cft_db:5432/${POSTGRES_DB:-cft_db}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-cft_user}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-cft_password}
+    ports:
+      - "8080:8080"
+    depends_on:
+      cft_db:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:
