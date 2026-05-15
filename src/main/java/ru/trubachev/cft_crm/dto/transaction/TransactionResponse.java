@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class TransactionResponse {
+
     public Long id;
     public Long sellerId;
     public BigDecimal amount;

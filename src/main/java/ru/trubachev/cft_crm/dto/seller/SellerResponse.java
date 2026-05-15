@@ -3,6 +3,7 @@ package ru.trubachev.cft_crm.dto.seller;
 import java.time.LocalDateTime;
 
 public class SellerResponse {
+
     public Long id;
     public String name;
     public String contactInfo;

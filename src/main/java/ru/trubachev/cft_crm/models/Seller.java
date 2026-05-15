@@ -1,25 +1,23 @@
 package ru.trubachev.cft_crm.models;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-
-import java.time.LocalDateTime;
-
-import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.SQLRestriction;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.SQLRestriction;
 
 @Entity
 @Table(name = "sellers")
 @SQLDelete(sql = "UPDATE sellers SET deleted = true WHERE id=?")
 @SQLRestriction("deleted = false")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonPropertyOrder({"id", "name", "contactInfo", "registrationDate"})
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+@JsonPropertyOrder({ "id", "name", "contactInfo", "registrationDate" })
 public class Seller {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
@@ -30,10 +28,13 @@ public class Seller {
 
     LocalDateTime registrationDate;
     private boolean deleted = false;
-    
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -64,12 +65,15 @@ public class Seller {
         return deleted;
     }
 
-    public Seller(String name, String contactInfo, LocalDateTime registrationDate) {
+    public Seller(
+        String name,
+        String contactInfo,
+        LocalDateTime registrationDate
+    ) {
         this.name = name;
         this.contactInfo = contactInfo;
         this.registrationDate = registrationDate;
     }
 
     public Seller() {}
-
 }
