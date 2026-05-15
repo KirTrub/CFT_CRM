@@ -29,6 +29,12 @@ public class AnalyticsServiceImpl implements AnalyticsService {
         String date,
         int quarter
     ) {
+        if (quarter < 1 || quarter > 4) {
+            throw new IllegalArgumentException(
+                "Quarter must be between 1 and 4"
+            );
+        }
+
         DateTimeFormatter dayFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter monthFormat = DateTimeFormatter.ofPattern("yyyy-MM");
         DateTimeFormatter yearFormat = DateTimeFormatter.ofPattern("yyyy");

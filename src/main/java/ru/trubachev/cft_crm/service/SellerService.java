@@ -6,9 +6,9 @@ import ru.trubachev.cft_crm.dto.seller.SellerResponse;
 import ru.trubachev.cft_crm.dto.seller.UpdateSellerRequest;
 
 public interface SellerService {
-    public List<SellerResponse> getAllSellers();
-    public SellerResponse getSellerById(long id);
-    public SellerResponse addSeller(CreateSellerRequest request);
-    public SellerResponse updateSeller(long id, UpdateSellerRequest request);
-    public void deleteSeller(long id);
+    List<SellerResponse> getAllSellers();
+    SellerResponse getSellerById(long id);
+    SellerResponse addSeller(CreateSellerRequest request);
+    SellerResponse updateSeller(long id, UpdateSellerRequest request);
+    void deleteSeller(long id);
 }

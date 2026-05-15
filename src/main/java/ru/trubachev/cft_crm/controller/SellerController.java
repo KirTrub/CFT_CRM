@@ -31,8 +31,7 @@ public class SellerController {
 
     @GetMapping
     public List<SellerResponse> getAllSellers() {
-        List<SellerResponse> response = service.getAllSellers();
-        return response;
+        return service.getAllSellers();
     }
 
     @GetMapping("/{id}")

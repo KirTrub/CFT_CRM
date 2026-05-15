@@ -64,7 +64,7 @@ class SellerRepoTest {
 
     @Test
     void testFindCreatedSeller() {
-        Seller seller = sellerRepo.findById(1L).orElse(null);
+        Seller seller = sellerRepo.findById(seller1.getId()).orElse(null);
         assertNotNull(seller);
         assertEquals("Test Seller1", seller.getName());
         assertEquals("test1@example.com", seller.getContactInfo());

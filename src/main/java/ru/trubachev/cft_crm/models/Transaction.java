@@ -15,16 +15,16 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "seller_id", nullable = false)
-    Seller seller;
+    private Seller seller;
 
-    BigDecimal amount;
-    String paymentType;
-    LocalDateTime transactionDate;
+    private BigDecimal amount;
+    private String paymentType;
+    private LocalDateTime transactionDate;
 
     public void setId(Long id) {
         this.id = id;

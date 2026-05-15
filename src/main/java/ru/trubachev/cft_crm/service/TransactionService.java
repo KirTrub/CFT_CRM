@@ -5,8 +5,8 @@ import ru.trubachev.cft_crm.dto.transaction.CreateTransaction;
 import ru.trubachev.cft_crm.dto.transaction.TransactionResponse;
 
 public interface TransactionService {
-    public List<TransactionResponse> getAllTransactions();
-    public TransactionResponse getTransactionById(long id);
-    public TransactionResponse addTransaction(CreateTransaction request);
-    public List<TransactionResponse> getSellerTransactions(long sellerId);
+    List<TransactionResponse> getAllTransactions();
+    TransactionResponse getTransactionById(long id);
+    TransactionResponse addTransaction(CreateTransaction request);
+    List<TransactionResponse> getSellerTransactions(long sellerId);
 }

@@ -36,9 +36,6 @@ class TransactionServiceTest {
     @InjectMocks
     private TransactionServiceImpl transactionService;
 
-    @InjectMocks
-    private SellerServiceImpl sellerService;
-
     @Test
     void addTransaction_shouldAddTransaction() {
         Seller testSeller = new Seller();

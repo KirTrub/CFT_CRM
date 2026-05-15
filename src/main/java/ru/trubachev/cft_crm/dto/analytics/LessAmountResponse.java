@@ -3,9 +3,7 @@ package ru.trubachev.cft_crm.dto.analytics;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.math.BigDecimal;
 
-@JsonPropertyOrder(
-    { "sellerId", "name", "contactInfo", "totalAmount", "period" }
-)
+@JsonPropertyOrder({ "id", "name", "contactInfo", "totalAmount" })
 public class LessAmountResponse {
 
     Long id;

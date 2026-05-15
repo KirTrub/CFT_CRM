@@ -44,47 +44,35 @@ public class AnalyticsControllerTest {
         when(service.getTopSeller(period, date, quarter)).thenReturn(response);
 
         final MediaType application_JSON2 = MediaType.APPLICATION_JSON;
-        if (application_JSON2 != null) {
-            mockMvc
-                .perform(
-                    MockMvcRequestBuilders.get("/analytics/topSeller")
-                        .contentType(application_JSON2)
-                        .param("period", period)
-                        .param("date", date)
+
+        mockMvc
+            .perform(
+                MockMvcRequestBuilders.get("/analytics/topSeller")
+                    .contentType(application_JSON2)
+                    .param("period", period)
+                    .param("date", date)
+            )
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.sellerId").value(
+                    response.sellerId
                 )
-                .andExpect(
-                    MockMvcResultMatchers.jsonPath("$.sellerId").value(
-                        response.sellerId
-                    )
+            )
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.name").value(response.name)
+            )
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.contactInfo").value(
+                    response.contactInfo
                 )
-                .andExpect(
-                    MockMvcResultMatchers.jsonPath("$.name").value(
-                        response.name
-                    )
+            )
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.totalAmount").value(
+                    response.totalAmount
                 )
-                .andExpect(
-                    MockMvcResultMatchers.jsonPath("$.contactInfo").value(
-                        response.contactInfo
-                    )
-                )
-                .andExpect(
-                    MockMvcResultMatchers.jsonPath("$.totalAmount").value(
-                        response.totalAmount
-                    )
-                )
-                .andExpect(
-                    MockMvcResultMatchers.jsonPath("$.period").value(period)
-                );
-        } else {
-            mockMvc
-                .perform(
-                    MockMvcRequestBuilders.get("/analytics/topSeller")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .param("period", period)
-                        .param("date", date)
-                )
-                .andExpect(status().isBadRequest());
-        }
+            )
+            .andExpect(
+                MockMvcResultMatchers.jsonPath("$.period").value(period)
+            );
     }
 
     @Test
