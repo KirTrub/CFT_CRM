@@ -21,7 +21,6 @@ import ru.trubachev.cft_crm.models.Seller;
 import ru.trubachev.cft_crm.models.Transaction;
 import ru.trubachev.cft_crm.repo.SellerRepo;
 import ru.trubachev.cft_crm.repo.TransactionRepo;
-import ru.trubachev.cft_crm.service.impl.SellerServiceImpl;
 import ru.trubachev.cft_crm.service.impl.TransactionServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
